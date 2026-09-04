@@ -6,7 +6,7 @@
   "note": "抖音相关与余额查询未纳入矩阵（抖音先不上；余额能力保留在每次付费调用回告）。",
   "skills": [
     {
-      "slug": "mglc-api",
+      "slug": "wechat-ecosystem-data-hub",
       "name": "微信生态数据台",
       "stage": "平台入口",
       "when": "用户要用曼格云查询任何微信生态数据（公众号、视频号、搜索、热搜、小程序、AI分析），或需求不明确需要自动选接口时使用",
@@ -19,10 +19,10 @@
           "price": 0.0
         }
       ],
-      "path": "skills/mglc-api"
+      "path": "skills/wechat-ecosystem-data-hub"
     },
     {
-      "slug": "mglc-mp-history",
+      "slug": "wechat-official-history",
       "name": "公众号历史文章库",
       "stage": "追号",
       "when": "用户想看某个公众号发过哪些文章、最近更新、今日发文、按关键词翻历史时使用",
@@ -50,10 +50,10 @@
           "price": 0.035
         }
       ],
-      "path": "skills/mglc-mp-history"
+      "path": "skills/wechat-official-history"
     },
     {
-      "slug": "mglc-mp-article",
+      "slug": "wechat-official-article-analytics",
       "name": "公众号文章数据透视",
       "stage": "看内容",
       "when": "用户想看某一篇公众号文章的数据（阅读/点赞/分享/收藏）、正文、图片清单或完整报告时使用",
@@ -91,10 +91,10 @@
           "price": 0.063
         }
       ],
-      "path": "skills/mglc-mp-article"
+      "path": "skills/wechat-official-article-analytics"
     },
     {
-      "slug": "mglc-mp-finder",
+      "slug": "wechat-official-account-finder",
       "name": "公众号找号",
       "stage": "找号",
       "when": "用户要按关键词/行业找公众号、了解某个公众号的资料简介时使用",
@@ -112,10 +112,10 @@
           "price": 0.03
         }
       ],
-      "path": "skills/mglc-mp-finder"
+      "path": "skills/wechat-official-account-finder"
     },
     {
-      "slug": "mglc-mp-tracker",
+      "slug": "wechat-official-competitor-tracker",
       "name": "公众号竞品追踪",
       "stage": "看同行",
       "when": "用户要持续看某个公众号最近发什么、哪篇数据好、整体表现如何时使用",
@@ -138,10 +138,10 @@
           "price": 0.015
         }
       ],
-      "path": "skills/mglc-mp-tracker"
+      "path": "skills/wechat-official-competitor-tracker"
     },
     {
-      "slug": "mglc-ch-info",
+      "slug": "wechat-channel-video-insight",
       "name": "视频号作品透视",
       "stage": "看内容",
       "when": "用户给一条视频号分享链接，想看这条视频的标题、账号、发布时间、封面、互动数据时使用",
@@ -169,10 +169,10 @@
           "price": 0.035
         }
       ],
-      "path": "skills/mglc-ch-info"
+      "path": "skills/wechat-channel-video-insight"
     },
     {
-      "slug": "mglc-ch-feed",
+      "slug": "wechat-channel-author-feed",
       "name": "视频号博主动态",
       "stage": "追号",
       "when": "用户想看某个视频号博主最近发了哪些作品时使用",
@@ -190,10 +190,10 @@
           "price": 0.1
         }
       ],
-      "path": "skills/mglc-ch-feed"
+      "path": "skills/wechat-channel-author-feed"
     },
     {
-      "slug": "mglc-ch-metrics",
+      "slug": "wechat-channel-metrics",
       "name": "视频号数据罗盘",
       "stage": "看数据",
       "when": "用户想看某条视频号的点赞、评论、收藏、转发、播放等精确互动数据时使用",
@@ -211,10 +211,10 @@
           "price": 0.21
         }
       ],
-      "path": "skills/mglc-ch-metrics"
+      "path": "skills/wechat-channel-metrics"
     },
     {
-      "slug": "mglc-ch-finder",
+      "slug": "wechat-channel-finder",
       "name": "视频号找号",
       "stage": "找号",
       "when": "用户要按关键词找视频号账号或找相关作品时使用",
@@ -232,10 +232,10 @@
           "price": 0.21
         }
       ],
-      "path": "skills/mglc-ch-finder"
+      "path": "skills/wechat-channel-finder"
     },
     {
-      "slug": "mglc-ch-audit",
+      "slug": "wechat-channel-ad-audit",
       "name": "视频号投放背调",
       "stage": "找号",
       "when": "用户在投放/合作前想评估一个视频号值不值得投、粉丝活跃度与内容表现如何时使用",
@@ -263,10 +263,10 @@
           "price": 0.098
         }
       ],
-      "path": "skills/mglc-ch-audit"
+      "path": "skills/wechat-channel-ad-audit"
     },
     {
-      "slug": "mglc-hot-radar",
+      "slug": "wechat-hot-topic-radar",
       "name": "热点选题雷达",
       "stage": "找方向",
       "when": "用户想找热点选题、看各平台热搜、找低粉爆文参考、拓展关键词时使用",
@@ -289,10 +289,10 @@
           "price": 0.1
         }
       ],
-      "path": "skills/mglc-hot-radar"
+      "path": "skills/wechat-hot-topic-radar"
     },
     {
-      "slug": "mglc-topic-mining",
+      "slug": "wechat-search-topic-mining",
       "name": "微信选题挖掘",
       "stage": "找方向",
       "when": "用户要围绕某个关键词挖掘微信内的选题、看相关文章热度、拓展长尾词时使用",
@@ -325,10 +325,10 @@
           "price": 0.1
         }
       ],
-      "path": "skills/mglc-topic-mining"
+      "path": "skills/wechat-search-topic-mining"
     },
     {
-      "slug": "mglc-vision",
+      "slug": "video-content-understanding",
       "name": "视频内容理解官",
       "stage": "做内容",
       "when": "用户想让AI看懂一个视频的内容、生成时间线、提取画面文字(OCR)、分析镜头与情绪时使用",
@@ -346,10 +346,10 @@
           "price": 0.05
         }
       ],
-      "path": "skills/mglc-vision"
+      "path": "skills/video-content-understanding"
     },
     {
-      "slug": "mglc-transcribe",
+      "slug": "audio-video-transcription",
       "name": "音视频转写台",
       "stage": "做内容",
       "when": "用户要把音频或视频转成文字稿、提取口播内容时使用",
@@ -367,10 +367,10 @@
           "price": 0.05
         }
       ],
-      "path": "skills/mglc-transcribe"
+      "path": "skills/audio-video-transcription"
     },
     {
-      "slug": "mglc-live",
+      "slug": "wechat-channel-live-replay",
       "name": "视频号直播回放台",
       "stage": "看数据",
       "when": "用户想看某个视频号的直播回放记录及其数据时使用",
@@ -393,10 +393,10 @@
           "price": 0.098
         }
       ],
-      "path": "skills/mglc-live"
+      "path": "skills/wechat-channel-live-replay"
     },
     {
-      "slug": "mglc-miniapp",
+      "slug": "wechat-mini-program-finder",
       "name": "小程序查找",
       "stage": "找号",
       "when": "用户要按关键词搜索微信小程序、了解小程序 AppID 与提供方时使用",
@@ -409,7 +409,7 @@
           "price": 0.7
         }
       ],
-      "path": "skills/mglc-miniapp"
+      "path": "skills/wechat-mini-program-finder"
     }
   ]
 }

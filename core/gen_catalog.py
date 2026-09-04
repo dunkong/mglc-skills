@@ -73,11 +73,11 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ```bash
 # 以「视频号找号」为例
-# 在 skillhub / clawhub 的发布入口选择 skills/mglc-ch-finder/ 目录发布
+# 在 skillhub / clawhub 的发布入口选择 skills/wechat-channel-finder/ 目录发布
 skills/
-├── mglc-api/                # 平台入口（全接口兜底）
-├── mglc-ch-finder/          # 视频号找号
-├── mglc-vision/             # 视频内容理解官
+├── wechat-ecosystem-data-hub/       # 平台入口（全接口兜底）
+├── wechat-channel-finder/          # 视频号找号
+├── video-content-understanding/    # 视频内容理解官
 └── ... （其余 13 个）
 ```
 

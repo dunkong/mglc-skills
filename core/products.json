@@ -1,6 +1,6 @@
 [
   {
-    "slug": "mglc-api",
+    "slug": "wechat-ecosystem-data-hub",
     "name": "微信生态数据台",
     "stage": "平台入口",
     "endpoints": [
@@ -11,7 +11,7 @@
     "desc": "曼格云(api.we-media.cn)全接口数据助手。一句话描述需求，自动选择并编排对应接口：公众号文章与账号、视频号作品与博主、搜一搜、微信指数、全网热搜、低粉爆文、小程序、视频视觉理解、音频转写。所有付费调用前先给费用预估。"
   },
   {
-    "slug": "mglc-mp-history",
+    "slug": "wechat-official-history",
     "name": "公众号历史文章库",
     "stage": "追号",
     "endpoints": [
@@ -24,7 +24,7 @@
     "desc": "查公众号历史文章与今日发文。给一个文章链接或 gh_ 原始ID，列出该号发过的文章（标题/时间/链接），支持翻页；也可只看今天发了什么。运营追号、竞品内容盘点常用。"
   },
   {
-    "slug": "mglc-mp-article",
+    "slug": "wechat-official-article-analytics",
     "name": "公众号文章数据透视",
     "stage": "看内容",
     "endpoints": [
@@ -39,7 +39,7 @@
     "desc": "单篇公众号文章的完整数据。基本信息、互动数据（阅读点赞分享收藏）、正文提取（文本/HTML/媒体清单）、一次拿全量的完整报告。支持按需求选维度，避免多余扣费。"
   },
   {
-    "slug": "mglc-mp-finder",
+    "slug": "wechat-official-account-finder",
     "name": "公众号找号",
     "stage": "找号",
     "endpoints": [
@@ -50,7 +50,7 @@
     "desc": "按关键词搜索公众号账号，返回名称、简介、微信号、认证主体；并可进一步查看任一公众号的详细资料。找对标号、找合作号、找行业号常用。"
   },
   {
-    "slug": "mglc-mp-tracker",
+    "slug": "wechat-official-competitor-tracker",
     "name": "公众号竞品追踪",
     "stage": "看同行",
     "endpoints": [
@@ -62,7 +62,7 @@
     "desc": "公众号账号全景追踪：先取账号资料，再拉近期文章列表，然后逐篇取互动数据，最后汇总成「这个号最近表现如何、哪篇最火」的报告。一次任务多接口组合。"
   },
   {
-    "slug": "mglc-ch-info",
+    "slug": "wechat-channel-video-insight",
     "name": "视频号作品透视",
     "stage": "看内容",
     "endpoints": [
@@ -75,7 +75,7 @@
     "desc": "视频号单条作品的完整档案。丢入分享链接即可解析出标题、发布账号、发布时间、封面、可用媒体与互动数据；也支持 objectId/短链互相转换与分享链接生成。"
   },
   {
-    "slug": "mglc-ch-feed",
+    "slug": "wechat-channel-author-feed",
     "name": "视频号博主动态",
     "stage": "追号",
     "endpoints": [
@@ -86,7 +86,7 @@
     "desc": "按视频号账号ID或分享链接，分页列出该博主的作品（标题、发布时间、objectId），并可输出作品分享链接。追博主更新、盘点内容常用。"
   },
   {
-    "slug": "mglc-ch-metrics",
+    "slug": "wechat-channel-metrics",
     "name": "视频号数据罗盘",
     "stage": "看数据",
     "endpoints": [
@@ -97,7 +97,7 @@
     "desc": "视频号作品的精确互动数据：点赞、评论、收藏、转发、播放量，并标注每个数值是精确值还是展示值（如1.2万），避免被约数误导。"
   },
   {
-    "slug": "mglc-ch-finder",
+    "slug": "wechat-channel-finder",
     "name": "视频号找号",
     "stage": "找号",
     "endpoints": [
@@ -108,7 +108,7 @@
     "desc": "按关键词搜索视频号账号与作品，返回账号名、作品标题与ID。找对标博主、找同行、找合作达人常用。"
   },
   {
-    "slug": "mglc-ch-audit",
+    "slug": "wechat-channel-ad-audit",
     "name": "视频号投放背调",
     "stage": "找号",
     "endpoints": [
@@ -121,7 +121,7 @@
     "desc": "视频号博主尽调：搜号定位 → 拉近期作品列表 → 逐条取作品资料与互动数据 → 汇总成「值不值得投」的评估报告（更新频率、平均互动、代表作、互动稳定性）。投放前决策常用。"
   },
   {
-    "slug": "mglc-hot-radar",
+    "slug": "wechat-hot-topic-radar",
     "name": "热点选题雷达",
     "stage": "找方向",
     "endpoints": [
@@ -133,7 +133,7 @@
     "desc": "选题灵感雷达（部分免费）：全网热搜榜（微博/抖音/知乎/头条/百度）、低粉爆文榜单、搜一搜联想推荐词。帮运营快速找到今天能写、能拍的选题方向。"
   },
   {
-    "slug": "mglc-topic-mining",
+    "slug": "wechat-search-topic-mining",
     "name": "微信选题挖掘",
     "stage": "找方向",
     "endpoints": [
@@ -147,7 +147,7 @@
     "desc": "围绕一个关键词做微信生态选题挖掘：综合搜索结果、微信指数相关结果、热门文章、联想推荐词，汇总成「这个方向值不值得做、有哪些细分角度」的选题清单。"
   },
   {
-    "slug": "mglc-vision",
+    "slug": "video-content-understanding",
     "name": "视频内容理解官",
     "stage": "做内容",
     "endpoints": [
@@ -158,7 +158,7 @@
     "desc": "用多模态大模型分析视频：内容摘要、分段时间线、镜头/运镜/转场/情绪、画面事实与屏幕文字OCR。支持三档深度，费用随档位不同，执行前先确认。"
   },
   {
-    "slug": "mglc-transcribe",
+    "slug": "audio-video-transcription",
     "name": "音视频转写台",
     "stage": "做内容",
     "endpoints": [
@@ -169,7 +169,7 @@
     "desc": "把音视频转成文字稿。传入公网可访问的文件地址即可得到转写文本，适合提取口播文案、整理会议/直播录音、做字幕与二次剪辑素材。"
   },
   {
-    "slug": "mglc-live",
+    "slug": "wechat-channel-live-replay",
     "name": "视频号直播回放台",
     "stage": "看数据",
     "endpoints": [
@@ -181,7 +181,7 @@
     "desc": "列出视频号账号可访问的直播回放记录（标题、时间、时长、封面），并可对指定回放取详细资料与互动数据。直播复盘、竞品直播研究常用。"
   },
   {
-    "slug": "mglc-miniapp",
+    "slug": "wechat-mini-program-finder",
     "name": "小程序查找",
     "stage": "找号",
     "endpoints": [

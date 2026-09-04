@@ -15,14 +15,3 @@ config.json
 # 系统
 .DS_Store
 Thumbs.db
-
-# 开发与测试残留（不发布）
-_d_*.json
-_e_*.json
-core/_tmp/
-*.log
-core/diag*.py
-core/retest*.py
-core/vision_check.py
-core/upload_check.py
-mglc-skills-publish.zip
