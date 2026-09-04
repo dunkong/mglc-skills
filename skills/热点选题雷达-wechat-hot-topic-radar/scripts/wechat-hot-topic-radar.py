@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from wm_core import WM, estimate, print_estimate, require_key, load_key, key_url, Formatter, EP, EXIT_INPUT, EXIT_OK
 
 SLUG = "wechat-hot-topic-radar"
-SOURCE = "workbuddy"
+SOURCE = "clawhub"
 KEY_URL = key_url(SOURCE)
 ENDPOINTS = ['hot-search', 'low-baseline-viral', 'mp-search-suggestions']
 REQ_NAMES = {"url", "ghid", "keyword", "query", "secUid", "accountId",

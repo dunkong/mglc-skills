@@ -57,7 +57,7 @@ for it in products:
 
 manifest = {
     "platform": "曼格云 (api.we-media.cn)",
-    "official_site": "https://api.we-media.cn?source=github",
+    "official_site": "https://api.we-media.cn?source=clawhub",
     "base": "wm_core.py (shared)",
     "count": len(skills),
     "note": "抖音相关与余额查询未纳入矩阵（抖音先不上；余额能力保留在每次付费调用回告）。",
@@ -79,7 +79,7 @@ table = "\n".join(rows)
 
 readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
-> 官网：https://api.we-media.cn?source=github ｜ 共 **{len(skills)}** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 先验 Key 再报价：无 Key 只引导注册（链接带 ?source 统计来源），拿到 Key 前不展示任何价格
+> 官网：https://api.we-media.cn?source=clawhub ｜ 共 **{len(skills)}** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 先验 Key 再报价：无 Key 只引导注册（链接带 ?source 统计来源），拿到 Key 前不展示任何价格
 >
 > 商业模式：**skill 是 API 获客前端，收入来自按调用量计费**（官网充值，不接 SkillPay）。
 

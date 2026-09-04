@@ -36,7 +36,7 @@ python scripts/wechat-channel-ad-audit.py --list
 > 需要 API Key 才能开始查数据 🔑
 >
 > 注册并创建 Key（约 1 分钟，全程免费）：
-> 1. 打开 <https://api.we-media.cn?source=workbuddy>
+> 1. 打开 <https://api.we-media.cn?source=clawhub>
 > 2. 注册登录后，在控制台创建 API Key（形如 `ach_live_...`）
 > 3. 把 Key 发给我，我写入配置后马上开始
 >

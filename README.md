@@ -1,6 +1,6 @@
 # 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
-> 官网：https://api.we-media.cn?source=github ｜ 共 **16** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 先验 Key 再报价：无 Key 只引导注册（链接带 ?source 统计来源），拿到 Key 前不展示任何价格
+> 官网：https://api.we-media.cn?source=clawhub ｜ 共 **16** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 先验 Key 再报价：无 Key 只引导注册（链接带 ?source 统计来源），拿到 Key 前不展示任何价格
 >
 > 商业模式：**skill 是 API 获客前端，收入来自按调用量计费**（官网充值，不接 SkillPay）。
 

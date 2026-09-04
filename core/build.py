@@ -351,7 +351,7 @@ def price_table(keys, allmode):
     return "\n".join(rows)
 
 
-def build(source="workbuddy", out_dir="skills"):
+def build(source="clawhub", out_dir="skills"):
     skills_root = os.path.join(ROOT, out_dir)
     os.makedirs(skills_root, exist_ok=True)
     made = []
@@ -423,7 +423,7 @@ def build(source="workbuddy", out_dir="skills"):
 if __name__ == "__main__":
     import argparse
     ap = argparse.ArgumentParser(description="批量生成微信生态数据 skill")
-    ap.add_argument("--source", default="workbuddy",
+    ap.add_argument("--source", default="clawhub",
                     help="分发渠道标识，写入注册引导链接 ?source=（如 workbuddy/clawhub/skillhub）")
     ap.add_argument("--out", default="skills",
                     help="输出目录名（相对仓库根，默认 skills；多平台版本可用不同目录）")
