@@ -1,0 +1,193 @@
+[
+  {
+    "slug": "mglc-api",
+    "name": "微信生态数据台",
+    "stage": "平台入口",
+    "endpoints": [
+      "account-balance"
+    ],
+    "all": true,
+    "when": "用户要用曼格云查询任何微信生态数据（公众号、视频号、搜索、热搜、小程序、AI分析），或需求不明确需要自动选接口时使用",
+    "desc": "曼格云(api.we-media.cn)全接口数据助手。一句话描述需求，自动选择并编排对应接口：公众号文章与账号、视频号作品与博主、搜一搜、微信指数、全网热搜、低粉爆文、小程序、视频视觉理解、音频转写。所有付费调用前先给费用预估。"
+  },
+  {
+    "slug": "mglc-mp-history",
+    "name": "公众号历史文章库",
+    "stage": "追号",
+    "endpoints": [
+      "mp-account-articles",
+      "mp-account-articles-today",
+      "mp-account-profile",
+      "mp-article-resolve"
+    ],
+    "when": "用户想看某个公众号发过哪些文章、最近更新、今日发文、按关键词翻历史时使用",
+    "desc": "查公众号历史文章与今日发文。给一个文章链接或 gh_ 原始ID，列出该号发过的文章（标题/时间/链接），支持翻页；也可只看今天发了什么。运营追号、竞品内容盘点常用。"
+  },
+  {
+    "slug": "mglc-mp-article",
+    "name": "公众号文章数据透视",
+    "stage": "看内容",
+    "endpoints": [
+      "mp-article-info",
+      "mp-article-metrics",
+      "mp-article-content",
+      "mp-article-media",
+      "mp-article-snapshot",
+      "mp-article-report"
+    ],
+    "when": "用户想看某一篇公众号文章的数据（阅读/点赞/分享/收藏）、正文、图片清单或完整报告时使用",
+    "desc": "单篇公众号文章的完整数据。基本信息、互动数据（阅读点赞分享收藏）、正文提取（文本/HTML/媒体清单）、一次拿全量的完整报告。支持按需求选维度，避免多余扣费。"
+  },
+  {
+    "slug": "mglc-mp-finder",
+    "name": "公众号找号",
+    "stage": "找号",
+    "endpoints": [
+      "mp-search-accounts",
+      "mp-account-profile"
+    ],
+    "when": "用户要按关键词/行业找公众号、了解某个公众号的资料简介时使用",
+    "desc": "按关键词搜索公众号账号，返回名称、简介、微信号、认证主体；并可进一步查看任一公众号的详细资料。找对标号、找合作号、找行业号常用。"
+  },
+  {
+    "slug": "mglc-mp-tracker",
+    "name": "公众号竞品追踪",
+    "stage": "看同行",
+    "endpoints": [
+      "mp-account-profile",
+      "mp-account-articles",
+      "mp-article-metrics"
+    ],
+    "when": "用户要持续看某个公众号最近发什么、哪篇数据好、整体表现如何时使用",
+    "desc": "公众号账号全景追踪：先取账号资料，再拉近期文章列表，然后逐篇取互动数据，最后汇总成「这个号最近表现如何、哪篇最火」的报告。一次任务多接口组合。"
+  },
+  {
+    "slug": "mglc-ch-info",
+    "name": "视频号作品透视",
+    "stage": "看内容",
+    "endpoints": [
+      "ch-info",
+      "ch-resolve",
+      "ch-share-url",
+      "ch-export-to-object"
+    ],
+    "when": "用户给一条视频号分享链接，想看这条视频的标题、账号、发布时间、封面、互动数据时使用",
+    "desc": "视频号单条作品的完整档案。丢入分享链接即可解析出标题、发布账号、发布时间、封面、可用媒体与互动数据；也支持 objectId/短链互相转换与分享链接生成。"
+  },
+  {
+    "slug": "mglc-ch-feed",
+    "name": "视频号博主动态",
+    "stage": "追号",
+    "endpoints": [
+      "ch-video-list",
+      "ch-account-search"
+    ],
+    "when": "用户想看某个视频号博主最近发了哪些作品时使用",
+    "desc": "按视频号账号ID或分享链接，分页列出该博主的作品（标题、发布时间、objectId），并可输出作品分享链接。追博主更新、盘点内容常用。"
+  },
+  {
+    "slug": "mglc-ch-metrics",
+    "name": "视频号数据罗盘",
+    "stage": "看数据",
+    "endpoints": [
+      "ch-metrics",
+      "ch-info"
+    ],
+    "when": "用户想看某条视频号的点赞、评论、收藏、转发、播放等精确互动数据时使用",
+    "desc": "视频号作品的精确互动数据：点赞、评论、收藏、转发、播放量，并标注每个数值是精确值还是展示值（如1.2万），避免被约数误导。"
+  },
+  {
+    "slug": "mglc-ch-finder",
+    "name": "视频号找号",
+    "stage": "找号",
+    "endpoints": [
+      "ch-account-search",
+      "ch-info"
+    ],
+    "when": "用户要按关键词找视频号账号或找相关作品时使用",
+    "desc": "按关键词搜索视频号账号与作品，返回账号名、作品标题与ID。找对标博主、找同行、找合作达人常用。"
+  },
+  {
+    "slug": "mglc-ch-audit",
+    "name": "视频号投放背调",
+    "stage": "找号",
+    "endpoints": [
+      "ch-account-search",
+      "ch-video-list",
+      "ch-info",
+      "ch-metrics"
+    ],
+    "when": "用户在投放/合作前想评估一个视频号值不值得投、粉丝活跃度与内容表现如何时使用",
+    "desc": "视频号博主尽调：搜号定位 → 拉近期作品列表 → 逐条取作品资料与互动数据 → 汇总成「值不值得投」的评估报告（更新频率、平均互动、代表作、互动稳定性）。投放前决策常用。"
+  },
+  {
+    "slug": "mglc-hot-radar",
+    "name": "热点选题雷达",
+    "stage": "找方向",
+    "endpoints": [
+      "hot-search",
+      "low-baseline-viral",
+      "mp-search-suggestions"
+    ],
+    "when": "用户想找热点选题、看各平台热搜、找低粉爆文参考、拓展关键词时使用",
+    "desc": "选题灵感雷达（部分免费）：全网热搜榜（微博/抖音/知乎/头条/百度）、低粉爆文榜单、搜一搜联想推荐词。帮运营快速找到今天能写、能拍的选题方向。"
+  },
+  {
+    "slug": "mglc-topic-mining",
+    "name": "微信选题挖掘",
+    "stage": "找方向",
+    "endpoints": [
+      "mp-search-summary",
+      "mp-search-wechat-index",
+      "mp-search-articles",
+      "mp-search-suggestions",
+      "mp-search-guide"
+    ],
+    "when": "用户要围绕某个关键词挖掘微信内的选题、看相关文章热度、拓展长尾词时使用",
+    "desc": "围绕一个关键词做微信生态选题挖掘：综合搜索结果、微信指数相关结果、热门文章、联想推荐词，汇总成「这个方向值不值得做、有哪些细分角度」的选题清单。"
+  },
+  {
+    "slug": "mglc-vision",
+    "name": "视频内容理解官",
+    "stage": "做内容",
+    "endpoints": [
+      "video-understanding",
+      "ch-download-url"
+    ],
+    "when": "用户想让AI看懂一个视频的内容、生成时间线、提取画面文字(OCR)、分析镜头与情绪时使用",
+    "desc": "用多模态大模型分析视频：内容摘要、分段时间线、镜头/运镜/转场/情绪、画面事实与屏幕文字OCR。支持三档深度，费用随档位不同，执行前先确认。"
+  },
+  {
+    "slug": "mglc-transcribe",
+    "name": "音视频转写台",
+    "stage": "做内容",
+    "endpoints": [
+      "audio-transcription",
+      "ch-download-url"
+    ],
+    "when": "用户要把音频或视频转成文字稿、提取口播内容时使用",
+    "desc": "把音视频转成文字稿。传入公网可访问的文件地址即可得到转写文本，适合提取口播文案、整理会议/直播录音、做字幕与二次剪辑素材。"
+  },
+  {
+    "slug": "mglc-live",
+    "name": "视频号直播回放台",
+    "stage": "看数据",
+    "endpoints": [
+      "ch-live-replays",
+      "ch-info",
+      "ch-metrics"
+    ],
+    "when": "用户想看某个视频号的直播回放记录及其数据时使用",
+    "desc": "列出视频号账号可访问的直播回放记录（标题、时间、时长、封面），并可对指定回放取详细资料与互动数据。直播复盘、竞品直播研究常用。"
+  },
+  {
+    "slug": "mglc-miniapp",
+    "name": "小程序查找",
+    "stage": "找号",
+    "endpoints": [
+      "mp-search-miniprograms"
+    ],
+    "when": "用户要按关键词搜索微信小程序、了解小程序 AppID 与提供方时使用",
+    "desc": "按关键词搜索微信小程序，返回名称、AppID、简介、图标、服务提供方。找竞品小程序、找合作方、做小程序调研常用。注意该接口单价较高，执行前务必确认。"
+  }
+]

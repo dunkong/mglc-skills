@@ -1,0 +1,28 @@
+# 运行时缓存与产物
+*/scripts/.cache/
+*/__pycache__/
+__pycache__/
+*.pyc
+
+# 运行时生成的输出（用户执行 skill 时产生）
+*_2026*.md
+*_2026*.xlsx
+
+# 用户本地密钥
+config.json
+*.local.json
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 开发与测试残留（不发布）
+_d_*.json
+_e_*.json
+core/_tmp/
+*.log
+core/diag*.py
+core/retest*.py
+core/vision_check.py
+core/upload_check.py
+mglc-skills-publish.zip
