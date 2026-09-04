@@ -305,7 +305,8 @@ def build():
     made = []
     for p in PRODUCTS:
         slug, name = p["slug"], p["name"]
-        d = os.path.join(SKILLS, slug)
+        dname = p.get("dir", slug)  # 目录名：中文混合展示名（slug 仍用于脚本/归因）
+        d = os.path.join(SKILLS, dname)
         os.makedirs(os.path.join(d, "scripts"), exist_ok=True)
 
         # 交互选项

@@ -18,12 +18,13 @@ for it in products:
     skills.append({
         "slug": it["slug"],
         "name": it["name"],
+        "dir": it.get("dir", it["slug"]),
         "stage": it.get("stage", ""),
         "when": it.get("when", ""),
         "desc": it.get("desc", ""),
         "all": it.get("all", False),
         "endpoints": [ep_info(k) for k in it.get("endpoints", [])],
-        "path": "skills/" + it["slug"],
+        "path": "skills/" + it.get("dir", it["slug"]),
     })
 
 manifest = {
@@ -44,8 +45,8 @@ for s in skills:
         eps = "全部接口（32 个，详见各专项 skill）"
     else:
         eps = "、".join(e["name"] for e in s["endpoints"])
-    rows.append("| {name} | `{slug}` | {stage} | {eps} |".format(
-        name=s["name"], slug=s["slug"], stage=s["stage"], eps=eps))
+    rows.append("| {name} | `{dir}` | {stage} | {eps} |".format(
+        name=s["name"], dir=s["dir"], stage=s["stage"], eps=eps))
 
 table = "\n".join(rows)
 
@@ -57,27 +58,27 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ## 一句话说明
 
-每个 `skills/<slug>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。
+每个 `skills/<目录名>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。
 用户无 Key 时引导去官网创建；所有付费接口调用前自动打印费用预估，需 `--yes` 确认才扣费；
 失败 / 超限接口费用自动退回（已用真实 Key 全量实测验证）。
 
 ## 技能目录（{len(skills)} 个）
 
-| 名称 | slug | 定位 | 覆盖接口 |
+| 名称 | 目录（标题） | 定位 | 覆盖接口 |
 |------|------|------|----------|
 {table}
 
 ## 怎么上架到 skillhub / clawhub
 
-每个 skill 目录即为一个独立发布单元，逐个上传即可：
+每个 skill 目录即为一个独立发布单元，逐个上传即可（目录名即平台显示标题）：
 
 ```bash
 # 以「视频号找号」为例
-# 在 skillhub / clawhub 的发布入口选择 skills/wechat-channel-finder/ 目录发布
+# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号-wechat-channel-finder/ 目录发布
 skills/
-├── wechat-ecosystem-data-hub/       # 平台入口（全接口兜底）
-├── wechat-channel-finder/          # 视频号找号
-├── video-content-understanding/    # 视频内容理解官
+├── 微信生态数据台-wechat-ecosystem-data-hub/       # 平台入口（全接口兜底）
+├── 视频号找号-wechat-channel-finder/          # 视频号找号
+├── 视频内容理解官-video-content-understanding/    # 视频内容理解官
 └── ... （其余 13 个）
 ```
 
