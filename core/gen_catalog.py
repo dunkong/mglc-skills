@@ -45,8 +45,8 @@ for s in skills:
         eps = "全部接口（32 个，详见各专项 skill）"
     else:
         eps = "、".join(e["name"] for e in s["endpoints"])
-    rows.append("| {name} | `{dir}` | {stage} | {eps} |".format(
-        name=s["name"], dir=s["dir"], stage=s["stage"], eps=eps))
+    rows.append("| {name} | `{slug}` | `{dir}` | {stage} | {eps} |".format(
+        name=s["name"], slug=s["slug"], dir=s["dir"], stage=s["stage"], eps=eps))
 
 table = "\n".join(rows)
 
@@ -64,8 +64,8 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ## 技能目录（{len(skills)} 个）
 
-| 名称 | 目录（标题） | 定位 | 覆盖接口 |
-|------|------|------|----------|
+| 名称 | slug（内部） | 目录（标题） | 定位 | 覆盖接口 |
+|------|------|------|------|----------|
 {table}
 
 ## 怎么上架到 skillhub / clawhub
@@ -74,11 +74,11 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ```bash
 # 以「视频号找号」为例
-# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号-wechat-channel-finder/ 目录发布
+# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号/ 目录发布
 skills/
-├── 微信生态数据台-wechat-ecosystem-data-hub/       # 平台入口（全接口兜底）
-├── 视频号找号-wechat-channel-finder/          # 视频号找号
-├── 视频内容理解官-video-content-understanding/    # 视频内容理解官
+├── 微信生态数据台/       # 平台入口（全接口兜底）
+├── 视频号找号/          # 视频号找号
+├── 视频内容理解官/    # 视频内容理解官
 └── ... （其余 13 个）
 ```
 
