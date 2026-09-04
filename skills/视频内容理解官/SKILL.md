@@ -1,5 +1,6 @@
 ---
 name: 视频内容理解官
+slug: video-content-understanding
 description: "用多模态大模型分析视频：内容摘要、分段时间线、镜头/运镜/转场/情绪、画面事实与屏幕文字OCR。支持三档深度，费用随档位不同，执行前先确认。 适用场景：用户想让AI看懂一个视频的内容、生成时间线、提取画面文字(OCR)、分析镜头与情绪时使用。"
 metadata:
   slug: video-content-understanding

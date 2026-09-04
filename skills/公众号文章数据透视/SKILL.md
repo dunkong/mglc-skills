@@ -1,5 +1,6 @@
 ---
 name: 公众号文章数据透视
+slug: wechat-official-article-analytics
 description: "单篇公众号文章的完整数据。基本信息、互动数据（阅读点赞分享收藏）、正文提取（文本/HTML/媒体清单）、一次拿全量的完整报告。支持按需求选维度，避免多余扣费。 适用场景：用户想看某一篇公众号文章的数据（阅读/点赞/分享/收藏）、正文、图片清单或完整报告时使用。"
 metadata:
   slug: wechat-official-article-analytics

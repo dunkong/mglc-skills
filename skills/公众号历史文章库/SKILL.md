@@ -1,5 +1,6 @@
 ---
 name: 公众号历史文章库
+slug: wechat-official-history
 description: "查公众号历史文章与今日发文。给一个文章链接或 gh_ 原始ID，列出该号发过的文章（标题/时间/链接），支持翻页；也可只看今天发了什么。运营追号、竞品内容盘点常用。 适用场景：用户想看某个公众号发过哪些文章、最近更新、今日发文、按关键词翻历史时使用。"
 metadata:
   slug: wechat-official-history

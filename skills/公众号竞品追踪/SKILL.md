@@ -1,5 +1,6 @@
 ---
 name: 公众号竞品追踪
+slug: wechat-official-competitor-tracker
 description: "公众号账号全景追踪：先取账号资料，再拉近期文章列表，然后逐篇取互动数据，最后汇总成「这个号最近表现如何、哪篇最火」的报告。一次任务多接口组合。 适用场景：用户要持续看某个公众号最近发什么、哪篇数据好、整体表现如何时使用。"
 metadata:
   slug: wechat-official-competitor-tracker

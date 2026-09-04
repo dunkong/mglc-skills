@@ -1,5 +1,6 @@
 ---
 name: 视频号直播回放台
+slug: wechat-channel-live-replay
 description: "列出视频号账号可访问的直播回放记录（标题、时间、时长、封面），并可对指定回放取详细资料与互动数据。直播复盘、竞品直播研究常用。 适用场景：用户想看某个视频号的直播回放记录及其数据时使用。"
 metadata:
   slug: wechat-channel-live-replay

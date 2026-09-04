@@ -1,5 +1,6 @@
 ---
 name: 公众号找号
+slug: wechat-official-account-finder
 description: "按关键词搜索公众号账号，返回名称、简介、微信号、认证主体；并可进一步查看任一公众号的详细资料。找对标号、找合作号、找行业号常用。 适用场景：用户要按关键词/行业找公众号、了解某个公众号的资料简介时使用。"
 metadata:
   slug: wechat-official-account-finder

@@ -1,5 +1,6 @@
 ---
 name: 视频号数据罗盘
+slug: wechat-channel-metrics
 description: "视频号作品的精确互动数据：点赞、评论、收藏、转发、播放量，并标注每个数值是精确值还是展示值（如1.2万），避免被约数误导。 适用场景：用户想看某条视频号的点赞、评论、收藏、转发、播放等精确互动数据时使用。"
 metadata:
   slug: wechat-channel-metrics

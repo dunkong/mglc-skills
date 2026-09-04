@@ -1,5 +1,6 @@
 ---
 name: 视频号博主动态
+slug: wechat-channel-author-feed
 description: "按视频号账号ID或分享链接，分页列出该博主的作品（标题、发布时间、objectId），并可输出作品分享链接。追博主更新、盘点内容常用。 适用场景：用户想看某个视频号博主最近发了哪些作品时使用。"
 metadata:
   slug: wechat-channel-author-feed

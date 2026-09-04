@@ -1,5 +1,6 @@
 ---
 name: 视频号作品透视
+slug: wechat-channel-video-insight
 description: "视频号单条作品的完整档案。丢入分享链接即可解析出标题、发布账号、发布时间、封面、可用媒体与互动数据；也支持 objectId/短链互相转换与分享链接生成。 适用场景：用户给一条视频号分享链接，想看这条视频的标题、账号、发布时间、封面、互动数据时使用。"
 metadata:
   slug: wechat-channel-video-insight

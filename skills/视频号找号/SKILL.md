@@ -1,5 +1,6 @@
 ---
 name: 视频号找号
+slug: wechat-channel-finder
 description: "按关键词搜索视频号账号与作品，返回账号名、作品标题与ID。找对标博主、找同行、找合作达人常用。 适用场景：用户要按关键词找视频号账号或找相关作品时使用。"
 metadata:
   slug: wechat-channel-finder

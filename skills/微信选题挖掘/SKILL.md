@@ -1,5 +1,6 @@
 ---
 name: 微信选题挖掘
+slug: wechat-search-topic-mining
 description: "围绕一个关键词做微信生态选题挖掘：综合搜索结果、微信指数相关结果、热门文章、联想推荐词，汇总成「这个方向值不值得做、有哪些细分角度」的选题清单。 适用场景：用户要围绕某个关键词挖掘微信内的选题、看相关文章热度、拓展长尾词时使用。"
 metadata:
   slug: wechat-search-topic-mining

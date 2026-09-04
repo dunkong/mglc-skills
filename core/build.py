@@ -172,6 +172,7 @@ if __name__ == "__main__":
 
 SKILL_TMPL = '''---
 name: {name}
+slug: {slug}
 description: "{desc} 适用场景：{desc_when}。"
 metadata:
   slug: {slug}

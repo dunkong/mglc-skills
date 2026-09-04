@@ -1,5 +1,6 @@
 ---
 name: 音视频转写台
+slug: audio-video-transcription
 description: "把音视频转成文字稿。传入公网可访问的文件地址即可得到转写文本，适合提取口播文案、整理会议/直播录音、做字幕与二次剪辑素材。 适用场景：用户要把音频或视频转成文字稿、提取口播内容时使用。"
 metadata:
   slug: audio-video-transcription

@@ -1,5 +1,6 @@
 ---
 name: 视频号投放背调
+slug: wechat-channel-ad-audit
 description: "视频号博主尽调：搜号定位 → 拉近期作品列表 → 逐条取作品资料与互动数据 → 汇总成「值不值得投」的评估报告（更新频率、平均互动、代表作、互动稳定性）。投放前决策常用。 适用场景：用户在投放/合作前想评估一个视频号值不值得投、粉丝活跃度与内容表现如何时使用。"
 metadata:
   slug: wechat-channel-ad-audit

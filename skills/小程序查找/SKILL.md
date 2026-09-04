@@ -1,5 +1,6 @@
 ---
 name: 小程序查找
+slug: wechat-mini-program-finder
 description: "按关键词搜索微信小程序，返回名称、AppID、简介、图标、服务提供方。找竞品小程序、找合作方、做小程序调研常用。注意该接口单价较高，执行前务必确认。 适用场景：用户要按关键词搜索微信小程序、了解小程序 AppID 与提供方时使用。"
 metadata:
   slug: wechat-mini-program-finder
