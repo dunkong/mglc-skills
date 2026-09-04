@@ -306,7 +306,7 @@ def build():
     made = []
     for p in PRODUCTS:
         slug, name = p["slug"], p["name"]
-        dname = p.get("dir", slug)  # 目录名使用 ASCII slug，中文展示名写在 SKILL.md 的 name 字段
+        dname = p.get("dir", slug)  # 目录名以中文展示名开头并保留 ASCII slug，兼容平台发布器
         d = os.path.join(SKILLS, dname)
         os.makedirs(os.path.join(d, "scripts"), exist_ok=True)
 
