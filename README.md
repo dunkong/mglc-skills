@@ -14,22 +14,22 @@
 
 | 名称 | slug（内部） | 目录（标题） | 定位 | 覆盖接口 |
 |------|------|------|------|----------|
-| 微信生态数据台 | `wechat-ecosystem-data-hub` | `微信生态数据台-wechat-ecosystem-data-hub` | 平台入口 | 全部接口（32 个，详见各专项 skill） |
-| 公众号历史文章库 | `wechat-official-history` | `公众号历史文章库-wechat-official-history` | 追号 | 公众号历史文章、公众号今日文章、公众号资料、文章短链解析 |
-| 公众号文章数据透视 | `wechat-official-article-analytics` | `公众号文章数据透视-wechat-official-article-analytics` | 看内容 | 文章基本信息、文章互动数据、文章正文、文章媒体资源、文章完整数据、文章完整报告 |
-| 公众号找号 | `wechat-official-account-finder` | `公众号找号-wechat-official-account-finder` | 找号 | 搜一搜公众号、公众号资料 |
-| 公众号竞品追踪 | `wechat-official-competitor-tracker` | `公众号竞品追踪-wechat-official-competitor-tracker` | 看同行 | 公众号资料、公众号历史文章、文章互动数据 |
-| 视频号作品透视 | `wechat-channel-video-insight` | `视频号作品透视-wechat-channel-video-insight` | 看内容 | 视频号作品资料、视频号作品解析、视频号分享链接、export 转作品 |
-| 视频号博主动态 | `wechat-channel-author-feed` | `视频号博主动态-wechat-channel-author-feed` | 追号 | 视频号作品列表、视频号账号搜索 |
-| 视频号数据罗盘 | `wechat-channel-metrics` | `视频号数据罗盘-wechat-channel-metrics` | 看数据 | 视频号互动数据、视频号作品资料 |
-| 视频号找号 | `wechat-channel-finder` | `视频号找号-wechat-channel-finder` | 找号 | 视频号账号搜索、视频号作品资料 |
-| 视频号投放背调 | `wechat-channel-ad-audit` | `视频号投放背调-wechat-channel-ad-audit` | 找号 | 视频号账号搜索、视频号作品列表、视频号作品资料、视频号互动数据 |
-| 热点选题雷达 | `wechat-hot-topic-radar` | `热点选题雷达-wechat-hot-topic-radar` | 找方向 | 全网热搜、低粉爆文、搜一搜推荐词 |
-| 微信选题挖掘 | `wechat-search-topic-mining` | `微信选题挖掘-wechat-search-topic-mining` | 找方向 | 搜一搜综合、微信指数、搜一搜文章、搜一搜推荐词、搜索引导 |
-| 视频内容理解官 | `video-content-understanding` | `视频内容理解官-video-content-understanding` | 做内容 | 视频视觉理解、视频号播放地址 |
-| 音视频转写台 | `audio-video-transcription` | `音视频转写台-audio-video-transcription` | 做内容 | 音频转文字、视频号播放地址 |
-| 视频号直播回放台 | `wechat-channel-live-replay` | `视频号直播回放台-wechat-channel-live-replay` | 看数据 | 视频号直播回放、视频号作品资料、视频号互动数据 |
-| 小程序查找 | `wechat-mini-program-finder` | `小程序查找-wechat-mini-program-finder` | 找号 | 搜一搜小程序 |
+| 微信生态数据台 | `wechat-ecosystem-data-hub` | `微信生态数据台` | 平台入口 | 全部接口（32 个，详见各专项 skill） |
+| 公众号历史文章库 | `wechat-official-history` | `公众号历史文章库` | 追号 | 公众号历史文章、公众号今日文章、公众号资料、文章短链解析 |
+| 公众号文章数据透视 | `wechat-official-article-analytics` | `公众号文章数据透视` | 看内容 | 文章基本信息、文章互动数据、文章正文、文章媒体资源、文章完整数据、文章完整报告 |
+| 公众号找号 | `wechat-official-account-finder` | `公众号找号` | 找号 | 搜一搜公众号、公众号资料 |
+| 公众号竞品追踪 | `wechat-official-competitor-tracker` | `公众号竞品追踪` | 看同行 | 公众号资料、公众号历史文章、文章互动数据 |
+| 视频号作品透视 | `wechat-channel-video-insight` | `视频号作品透视` | 看内容 | 视频号作品资料、视频号作品解析、视频号分享链接、export 转作品 |
+| 视频号博主动态 | `wechat-channel-author-feed` | `视频号博主动态` | 追号 | 视频号作品列表、视频号账号搜索 |
+| 视频号数据罗盘 | `wechat-channel-metrics` | `视频号数据罗盘` | 看数据 | 视频号互动数据、视频号作品资料 |
+| 视频号找号 | `wechat-channel-finder` | `视频号找号` | 找号 | 视频号账号搜索、视频号作品资料 |
+| 视频号投放背调 | `wechat-channel-ad-audit` | `视频号投放背调` | 找号 | 视频号账号搜索、视频号作品列表、视频号作品资料、视频号互动数据 |
+| 热点选题雷达 | `wechat-hot-topic-radar` | `热点选题雷达` | 找方向 | 全网热搜、低粉爆文、搜一搜推荐词 |
+| 微信选题挖掘 | `wechat-search-topic-mining` | `微信选题挖掘` | 找方向 | 搜一搜综合、微信指数、搜一搜文章、搜一搜推荐词、搜索引导 |
+| 视频内容理解官 | `video-content-understanding` | `视频内容理解官` | 做内容 | 视频视觉理解、视频号播放地址 |
+| 音视频转写台 | `audio-video-transcription` | `音视频转写台` | 做内容 | 音频转文字、视频号播放地址 |
+| 视频号直播回放台 | `wechat-channel-live-replay` | `视频号直播回放台` | 看数据 | 视频号直播回放、视频号作品资料、视频号互动数据 |
+| 小程序查找 | `wechat-mini-program-finder` | `小程序查找` | 找号 | 搜一搜小程序 |
 
 ## 怎么上架到 skillhub / clawhub
 
