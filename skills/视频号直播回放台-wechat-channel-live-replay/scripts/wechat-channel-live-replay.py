@@ -11,9 +11,11 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from wm_core import WM, estimate, print_estimate, require_key, Formatter, EP, EXIT_INPUT, EXIT_OK
+from wm_core import WM, estimate, print_estimate, require_key, load_key, key_url, Formatter, EP, EXIT_INPUT, EXIT_OK
 
 SLUG = "wechat-channel-live-replay"
+SOURCE = "workbuddy"
+KEY_URL = key_url(SOURCE)
 ENDPOINTS = ['ch-live-replays', 'ch-info', 'ch-metrics']
 REQ_NAMES = {"url", "ghid", "keyword", "query", "secUid", "accountId",
              "shareUrl", "objectId", "exportId", "videoId", "fileUrl", "videoUrl", "biz"}
@@ -77,7 +79,15 @@ def parse(argv):
 
 def main():
     positional, params, fmt, report, output, yes, pages, file_path = parse(sys.argv[1:])
-    if not positional or positional[0] in ("-h", "--help", "--list"):
+    is_help = not positional or positional[0] in ("-h", "--help", "--list")
+    is_est = bool(positional) and positional[0] == "--estimate"
+
+    # ① 第一优先：检查 Key。没有 Key 时只做注册引导（不显示任何价格信息），退出码 3。
+    #    引导链接带 ?source=<SOURCE>，用于统计用户来源平台。
+    if not load_key():
+        require_key(SLUG, SOURCE)   # 内部打印引导并 sys.exit(3)
+
+    if is_help:
         print("可用端点：")
         for k in ENDPOINTS:
             e = EP[k]
@@ -86,7 +96,7 @@ def main():
         print("示例: python scripts/wechat-channel-live-replay.py <端点> --yes url=链接 --format excel")
         sys.exit(EXIT_OK)
 
-    if positional[0] == "--estimate":
+    if is_est:
         print_estimate(estimate(positional[1:]), title="视频号直播回放台 费用预估")
         sys.exit(EXIT_OK)
 
@@ -95,9 +105,6 @@ def main():
         print("该 skill 不含端点 {!r}，可用：{}".format(key, ", ".join(ENDPOINTS)), file=sys.stderr)
         sys.exit(EXIT_INPUT)
     ep = EP[key]
-
-    # 无 Key 引导（退出码 3，0 费用）—— 放在校验之前，没 Key 先引导
-    require_key(SLUG)
 
     # 说明：参数合法性交由服务端校验（返回中文错误更明确），此处不做强校验，
     # 避免把可选项（如 ghid 与 url 二选一）误判为必填导致误退。
@@ -112,7 +119,7 @@ def main():
         print("  python scripts/wechat-channel-live-replay.py {key} --yes {rest}".format(key=key, rest=rest))
         sys.exit(EXIT_OK)
 
-    wm = WM(SLUG)
+    wm = WM(SLUG, source=SOURCE)
 
     # 本地文件：先传到平台临时存储（不计费、≤128MB、2 小时后自动清理），换成公网地址
     if file_path:

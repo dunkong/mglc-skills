@@ -81,22 +81,30 @@ def load_key():
     return os.environ.get("WM_API_KEY", "").strip()
 
 
-KEY_GUIDE = """需要曼格云 API Key 才能调用数据接口 🔑
+def key_url(source=None):
+    """注册/创建 Key 的引导链接，带 source 统计参数。"""
+    return OFFICIAL + ("?source=" + source if source else "")
 
-获取步骤（约 1 分钟）：
+
+KEY_GUIDE = """需要曼格云 API Key 才能继续 🔑
+
+注册并创建 Key（约 1 分钟，全程免费）：
 1. 打开 {site} 注册并登录
 2. 在控制台创建 API Key（形如 ach_live_...）
-3. 把 Key 发给我，我写入配置后就可以开始
+3. 把 Key 发给我，我写入配置后马上开始
 
-没有 Key 之前不会产生任何费用。""".format(site=OFFICIAL)
+说明：注册、创建 Key 不产生任何费用；只有你确认执行具体查询后才按次计费。"""
 
 
-def require_key(slug=""):
-    """无 Key 时输出标准引导并退出 3；有 Key 则返回。"""
+def require_key(slug="", source=None):
+    """无 Key 时输出标准引导并退出 3；有 Key 则返回。
+    source：分发渠道标识（workbuddy/clawhub/skillhub...），写入引导链接 ?source= 供统计。"""
     k = load_key()
     if not k:
-        sys.stderr.write(KEY_GUIDE + "\n")
+        url = key_url(source)
+        sys.stderr.write(KEY_GUIDE.format(site=url) + "\n")
         print("WM_NEED_KEY=1")
+        print("WM_KEY_URL=" + url)
         print("WM_OFFICIAL_SITE=" + OFFICIAL)
         if slug:
             print("WM_SKILL=" + slug)
@@ -159,8 +167,9 @@ def print_estimate(est, title="费用预估"):
 
 # ---------------- 调用 ----------------
 class WM:
-    def __init__(self, slug="mglc", timeout=90, cache=True, max_retries=2):
+    def __init__(self, slug="mglc", timeout=90, cache=True, max_retries=2, source=None):
         self.slug = slug
+        self.source = source
         self.timeout = timeout
         self.cache = cache
         self.max_retries = max_retries
@@ -182,7 +191,7 @@ class WM:
 
     def call(self, key, with_source=True, **params):
         """调用一个端点。返回 data。source 由 self.slug 自动注入。"""
-        k = require_key(self.slug)
+        k = require_key(self.slug, self.source)
         ep = EP.get(key)
         if not ep:
             sys.stderr.write("未知端点 {}\n".format(key))
@@ -320,7 +329,7 @@ class WM:
             sys.stderr.write("文件超过平台存储 128MB 上限：%s（%.1fMB）\n"
                              % (path, size / 1048576.0))
             sys.exit(EXIT_INPUT)
-        k = require_key(self.slug)
+        k = require_key(self.slug, self.source)
         fname = os.path.basename(path)
         ctype = _guess_mime(path)
 

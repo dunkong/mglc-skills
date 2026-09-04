@@ -1,6 +1,6 @@
 {
   "platform": "曼格云 (api.we-media.cn)",
-  "official_site": "https://api.we-media.cn",
+  "official_site": "https://api.we-media.cn?source=github",
   "base": "wm_core.py (shared)",
   "count": 16,
   "note": "抖音相关与余额查询未纳入矩阵（抖音先不上；余额能力保留在每次付费调用回告）。",

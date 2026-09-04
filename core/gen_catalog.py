@@ -1,9 +1,37 @@
 # -*- coding: utf-8 -*-
 """从 products.json / endpoints.json 生成发布目录 README、manifest.json、.gitignore。"""
-import json, os
+import json, os, time
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(BASE)  # mglc-skills/
+
+
+def _write(path, text):
+    """写文件；Windows 下覆盖已存在文件可能被监控进程锁定：
+    先写临时新文件，再删除旧文件并改名（新建文件不受锁影响）。"""
+    tmp = path + ".tmp_wm"
+    last = None
+    for i in range(5):
+        try:
+            with open(tmp, "w", encoding="utf-8") as f:
+                f.write(text)
+            break
+        except PermissionError as e:
+            last = e
+            time.sleep(1.0 + i)
+    if last:
+        raise last
+    for i in range(5):
+        try:
+            if os.path.exists(path):
+                os.remove(path)
+            os.rename(tmp, path)
+            return
+        except PermissionError as e:
+            last = e
+            time.sleep(1.0 + i)
+    raise last
+
 
 products = json.load(open(os.path.join(BASE, "products.json"), encoding="utf-8"))
 ep_meta = json.load(open(os.path.join(BASE, "endpoints.json"), encoding="utf-8"))
@@ -29,14 +57,13 @@ for it in products:
 
 manifest = {
     "platform": "曼格云 (api.we-media.cn)",
-    "official_site": "https://api.we-media.cn",
+    "official_site": "https://api.we-media.cn?source=github",
     "base": "wm_core.py (shared)",
     "count": len(skills),
     "note": "抖音相关与余额查询未纳入矩阵（抖音先不上；余额能力保留在每次付费调用回告）。",
     "skills": skills,
 }
-with open(os.path.join(ROOT, "manifest.json"), "w", encoding="utf-8") as f:
-    json.dump(manifest, f, ensure_ascii=False, indent=2)
+_write(os.path.join(ROOT, "manifest.json"), json.dumps(manifest, ensure_ascii=False, indent=2))
 
 # ---- README ----
 rows = []
@@ -52,13 +79,13 @@ table = "\n".join(rows)
 
 readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
-> 官网：https://api.we-media.cn ｜ 共 **{len(skills)}** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 付费前强制预估费用
+> 官网：https://api.we-media.cn?source=github ｜ 共 **{len(skills)}** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 先验 Key 再报价：无 Key 只引导注册（链接带 ?source 统计来源），拿到 Key 前不展示任何价格
 >
 > 商业模式：**skill 是 API 获客前端，收入来自按调用量计费**（官网充值，不接 SkillPay）。
 
 ## 一句话说明
 
-每个 `skills/<目录名>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。目录采用“中文名-英文 slug”，兼容平台的 slug 生成和中文显示。
+每个 `skills/<目录名>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。
 用户无 Key 时引导去官网创建；所有付费接口调用前自动打印费用预估，需 `--yes` 确认才扣费；
 失败 / 超限接口费用自动退回（已用真实 Key 全量实测验证）。
 
@@ -74,15 +101,13 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ```bash
 # 以「视频号找号」为例
-# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号-wechat-channel-finder/ 目录发布
+# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号/ 目录发布
 skills/
-├── 微信生态数据台-wechat-ecosystem-data-hub/       # 平台入口（全接口兜底）
-├── 视频号找号-wechat-channel-finder/                # 视频号找号
-├── 视频内容理解官-video-content-understanding/      # 视频内容理解官
+├── 微信生态数据台/       # 平台入口（全接口兜底）
+├── 视频号找号/          # 视频号找号
+├── 视频内容理解官/    # 视频内容理解官
 └── ... （其余 13 个）
 ```
-
-目录采用“中文显示名-英文 slug”。平台从末尾英文部分生成 slug，同时目录本身保留中文可读名称。
 
 - 无 Key 引导、source 归因、费用预估、Excel/Markdown/报告输出均已内置。
 - 抖音相关与「账户余额」独立 skill 未纳入（抖音先不上；余额能力保留在每次付费调用后回告 `WM_BALANCE`）。
@@ -107,8 +132,7 @@ git push -u origin main
 > 测试报告：`reports/realtest_report.md`（33 端点全绿、16 skill 全绿、封装层实测）。
 """
 
-with open(os.path.join(ROOT, "README.md"), "w", encoding="utf-8") as f:
-    f.write(readme)
+_write(os.path.join(ROOT, "README.md"), readme)
 
 gitignore = """# 运行时缓存与产物
 */scripts/.cache/
@@ -128,8 +152,7 @@ config.json
 .DS_Store
 Thumbs.db
 """
-with open(os.path.join(ROOT, ".gitignore"), "w", encoding="utf-8") as f:
-    f.write(gitignore)
+_write(os.path.join(ROOT, ".gitignore"), gitignore)
 
 print("已生成: manifest.json, README.md, .gitignore")
 print("skill 数:", len(skills))

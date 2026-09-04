@@ -1,12 +1,12 @@
 # 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
-> 官网：https://api.we-media.cn ｜ 共 **16** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 付费前强制预估费用
+> 官网：https://api.we-media.cn?source=github ｜ 共 **16** 个 skill ｜ 底层统一底座 `wm_core.py` ｜ 先验 Key 再报价：无 Key 只引导注册（链接带 ?source 统计来源），拿到 Key 前不展示任何价格
 >
 > 商业模式：**skill 是 API 获客前端，收入来自按调用量计费**（官网充值，不接 SkillPay）。
 
 ## 一句话说明
 
-每个 `skills/<目录名>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。目录采用“中文名-英文 slug”，兼容平台的 slug 生成和中文显示。
+每个 `skills/<目录名>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。
 用户无 Key 时引导去官网创建；所有付费接口调用前自动打印费用预估，需 `--yes` 确认才扣费；
 失败 / 超限接口费用自动退回（已用真实 Key 全量实测验证）。
 
@@ -37,15 +37,13 @@
 
 ```bash
 # 以「视频号找号」为例
-# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号-wechat-channel-finder/ 目录发布
+# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号/ 目录发布
 skills/
-├── 微信生态数据台-wechat-ecosystem-data-hub/       # 平台入口（全接口兜底）
-├── 视频号找号-wechat-channel-finder/                # 视频号找号
-├── 视频内容理解官-video-content-understanding/      # 视频内容理解官
+├── 微信生态数据台/       # 平台入口（全接口兜底）
+├── 视频号找号/          # 视频号找号
+├── 视频内容理解官/    # 视频内容理解官
 └── ... （其余 13 个）
 ```
-
-目录采用“中文显示名-英文 slug”。平台从末尾英文部分生成 slug，同时目录本身保留中文可读名称。
 
 - 无 Key 引导、source 归因、费用预估、Excel/Markdown/报告输出均已内置。
 - 抖音相关与「账户余额」独立 skill 未纳入（抖音先不上；余额能力保留在每次付费调用后回告 `WM_BALANCE`）。

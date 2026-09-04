@@ -4,6 +4,46 @@
 import json
 import os
 import shutil
+import time
+
+
+def _write(path, text):
+    """写文件；Windows 下覆盖已存在文件可能被监控进程锁定：
+    先写临时新文件，再删除旧文件并改名（新建文件不受锁影响）。"""
+    tmp = path + ".tmp_wm"
+    last = None
+    for i in range(5):
+        try:
+            with open(tmp, "w", encoding="utf-8") as f:
+                f.write(text)
+            break
+        except PermissionError as e:
+            last = e
+            time.sleep(1.0 + i)
+    if last:
+        raise last
+    for i in range(5):
+        try:
+            if os.path.exists(path):
+                os.remove(path)
+            os.rename(tmp, path)
+            return
+        except PermissionError as e:
+            last = e
+            time.sleep(1.0 + i)
+    raise last
+
+
+def _copy(src, dst):
+    last = None
+    for i in range(5):
+        try:
+            shutil.copy(src, dst)
+            return
+        except PermissionError as e:
+            last = e
+            time.sleep(1.0 + i)
+    raise last
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -30,9 +70,11 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from wm_core import WM, estimate, print_estimate, require_key, Formatter, EP, EXIT_INPUT, EXIT_OK
+from wm_core import WM, estimate, print_estimate, require_key, load_key, key_url, Formatter, EP, EXIT_INPUT, EXIT_OK
 
 SLUG = "{slug}"
+SOURCE = "{source}"
+KEY_URL = key_url(SOURCE)
 ENDPOINTS = {endpoints!r}
 REQ_NAMES = {"url", "ghid", "keyword", "query", "secUid", "accountId",
              "shareUrl", "objectId", "exportId", "videoId", "fileUrl", "videoUrl", "biz"}
@@ -96,7 +138,15 @@ def parse(argv):
 
 def main():
     positional, params, fmt, report, output, yes, pages, file_path = parse(sys.argv[1:])
-    if not positional or positional[0] in ("-h", "--help", "--list"):
+    is_help = not positional or positional[0] in ("-h", "--help", "--list")
+    is_est = bool(positional) and positional[0] == "--estimate"
+
+    # ① 第一优先：检查 Key。没有 Key 时只做注册引导（不显示任何价格信息），退出码 3。
+    #    引导链接带 ?source=<SOURCE>，用于统计用户来源平台。
+    if not load_key():
+        require_key(SLUG, SOURCE)   # 内部打印引导并 sys.exit(3)
+
+    if is_help:
         print("可用端点：")
         for k in ENDPOINTS:
             e = EP[k]
@@ -105,7 +155,7 @@ def main():
         print("示例: python scripts/{slug}.py <端点> --yes url=链接 --format excel")
         sys.exit(EXIT_OK)
 
-    if positional[0] == "--estimate":
+    if is_est:
         print_estimate(estimate(positional[1:]), title="{name} 费用预估")
         sys.exit(EXIT_OK)
 
@@ -114,9 +164,6 @@ def main():
         print("该 skill 不含端点 {!r}，可用：{}".format(key, ", ".join(ENDPOINTS)), file=sys.stderr)
         sys.exit(EXIT_INPUT)
     ep = EP[key]
-
-    # 无 Key 引导（退出码 3，0 费用）—— 放在校验之前，没 Key 先引导
-    require_key(SLUG)
 
     # 说明：参数合法性交由服务端校验（返回中文错误更明确），此处不做强校验，
     # 避免把可选项（如 ghid 与 url 二选一）误判为必填导致误退。
@@ -131,7 +178,7 @@ def main():
         print("  python scripts/{slug}.py {key} --yes {rest}".format(key=key, rest=rest))
         sys.exit(EXIT_OK)
 
-    wm = WM(SLUG)
+    wm = WM(SLUG, source=SOURCE)
 
     # 本地文件：先传到平台临时存储（不计费、≤128MB、2 小时后自动清理），换成公网地址
     if file_path:
@@ -194,7 +241,7 @@ metadata:
 
 ## 执行流程（严格按顺序）
 
-### 第 1 步：确认 API Key（不产生费用）
+### 第 1 步：确认 API Key（最先执行，绝不谈费用）
 
 运行前先确认 Key 已就绪：
 
@@ -202,25 +249,28 @@ metadata:
 python scripts/{slug}.py --list
 ```
 
-若用户未提供 Key，脚本会退出码 3 并输出标准引导。此时**原样转述下面的话给用户**，不要自行改写：
+若脚本输出 `WM_NEED_KEY=1`，说明用户还没有 Key。此时**只做一件事：引导注册**——
+不要报价、不要提"预估费用"、不要展示任何价格数字。原样转述下面的话给用户，不要自行改写：
 
-> 需要曼格云 API Key 才能调用数据接口 🔑
+> 需要 API Key 才能开始查数据 🔑
 >
-> 获取步骤（约 1 分钟）：
-> 1. 打开 <https://api.we-media.cn> 注册并登录
-> 2. 在控制台创建 API Key（形如 `ach_live_...`）
-> 3. 把 Key 发给我，我写入配置后就可以开始
+> 注册并创建 Key（约 1 分钟，全程免费）：
+> 1. 打开 <https://api.we-media.cn?source={source}>
+> 2. 注册登录后，在控制台创建 API Key（形如 `ach_live_...`）
+> 3. 把 Key 发给我，我写入配置后马上开始
 >
-> 没有 Key 之前不会产生任何费用。
+> 注册和创建 Key 完全免费；只有你之后确认执行具体查询时才按次计费。
 
 拿到 Key 后写入本技能目录的 `config.json`（`{"WM_API_KEY":"..."}`）再继续。
+
+**红线：Key 就绪之前，禁止向用户展示任何费用预估或价格信息。**
 
 ### 第 2 步：确认用户需求（尽量给选项）
 
 需要用户决策的地方，用 `AskUserQuestion` 提供选项让其直接选择，不要让用户手打参数。
 常用可选项见下方「交互选项」。
 
-### 第 3 步：费用预估与确认（付费前强制，代码级）
+### 第 3 步：费用预估与确认（Key 已就绪后才执行；付费前强制，代码级）
 
 调用**付费端点**时，脚本会**先自动打印费用预估，然后停下并输出 `WM_NEED_CONFIRM=1`，不会直接扣费**——这是硬性约束，绕不过。
 
@@ -301,13 +351,14 @@ def price_table(keys, allmode):
     return "\n".join(rows)
 
 
-def build():
-    os.makedirs(SKILLS, exist_ok=True)
+def build(source="workbuddy", out_dir="skills"):
+    skills_root = os.path.join(ROOT, out_dir)
+    os.makedirs(skills_root, exist_ok=True)
     made = []
     for p in PRODUCTS:
         slug, name = p["slug"], p["name"]
-        dname = p.get("dir", slug)  # 目录名以中文展示名开头并保留 ASCII slug，兼容平台发布器
-        d = os.path.join(SKILLS, dname)
+        dname = p.get("dir", slug)  # 目录名：中文展示名（slug 仍用于脚本/归因）
+        d = os.path.join(skills_root, dname)
         os.makedirs(os.path.join(d, "scripts"), exist_ok=True)
 
         # 交互选项
@@ -345,6 +396,7 @@ def build():
         md = (SKILL_TMPL
               .replace("{name}", name)
               .replace("{slug}", slug)
+              .replace("{source}", source)
               .replace("{desc}", p["desc"])
               .replace("{desc_when}", p["when"])
               .replace("{stage}", p["stage"])
@@ -352,25 +404,31 @@ def build():
               .replace("{options}", opts)
               .replace("{primary}", primary)
               .replace("{example}", example))
-        with open(os.path.join(d, "SKILL.md"), "w", encoding="utf-8") as f:
-            f.write(md)
+        _write(os.path.join(d, "SKILL.md"), md)
 
         runner = (RUNNER
                   .replace("{name}", name)
                   .replace("{slug}", slug)
+                  .replace("{source}", source)
                   .replace("{endpoints!r}", repr(p["endpoints"])))
-        with open(os.path.join(d, "scripts", slug + ".py"), "w", encoding="utf-8") as f:
-            f.write(runner)
+        _write(os.path.join(d, "scripts", slug + ".py"), runner)
 
         # 自包含：复制底座
         for src in ("wm_core.py", "endpoints.json"):
-            shutil.copy(os.path.join(HERE, src), os.path.join(d, "scripts", src))
+            _copy(os.path.join(HERE, src), os.path.join(d, "scripts", src))
         made.append(slug)
     return made
 
 
 if __name__ == "__main__":
-    m = build()
-    print("生成 {} 个 skill：".format(len(m)))
+    import argparse
+    ap = argparse.ArgumentParser(description="批量生成微信生态数据 skill")
+    ap.add_argument("--source", default="workbuddy",
+                    help="分发渠道标识，写入注册引导链接 ?source=（如 workbuddy/clawhub/skillhub）")
+    ap.add_argument("--out", default="skills",
+                    help="输出目录名（相对仓库根，默认 skills；多平台版本可用不同目录）")
+    a = ap.parse_args()
+    m = build(source=a.source, out_dir=a.out)
+    print("生成 {} 个 skill（source={}, out={}）：".format(len(m), a.source, a.out))
     for s in m:
         print("  " + s)
