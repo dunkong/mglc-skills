@@ -58,7 +58,7 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ## 一句话说明
 
-每个 `skills/<目录名>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。
+每个 `skills/<slug>/` 是一个独立、可直接上架的 skill（含 `SKILL.md` + `scripts/`）。目录使用英文 slug，`SKILL.md` 中的 `name` 保留中文显示名。
 用户无 Key 时引导去官网创建；所有付费接口调用前自动打印费用预估，需 `--yes` 确认才扣费；
 失败 / 超限接口费用自动退回（已用真实 Key 全量实测验证）。
 
@@ -74,13 +74,15 @@ readme = f"""# 曼格云 Skill 矩阵（微信生态数据 API 技能包）
 
 ```bash
 # 以「视频号找号」为例
-# 在 skillhub / clawhub 的发布入口选择 skills/视频号找号/ 目录发布
+# 在 skillhub / clawhub 的发布入口选择 skills/wechat-channel-finder/ 目录发布
 skills/
-├── 微信生态数据台/       # 平台入口（全接口兜底）
-├── 视频号找号/          # 视频号找号
-├── 视频内容理解官/    # 视频内容理解官
+├── wechat-ecosystem-data-hub/       # 微信生态数据台（平台入口）
+├── wechat-channel-finder/            # 视频号找号
+├── video-content-understanding/      # 视频内容理解官
 └── ... （其余 13 个）
 ```
+
+目录名必须使用 ASCII slug。平台发布阶段会从 `SKILL.md` 所在目录生成 slug；中文展示名请写在 `SKILL.md` 的 `name` 字段中。
 
 - 无 Key 引导、source 归因、费用预估、Excel/Markdown/报告输出均已内置。
 - 抖音相关与「账户余额」独立 skill 未纳入（抖音先不上；余额能力保留在每次付费调用后回告 `WM_BALANCE`）。
